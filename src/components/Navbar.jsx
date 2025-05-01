@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     return (
@@ -7,12 +7,12 @@ const Navbar = () => {
             <div className=""></div>
             <div className="flex gap-3">
             <NavLink className={({isActive}) => isActive? 'underline' : ''} to='/'>Home</NavLink>
-            <NavLink className={({isActive}) => isActive? 'underline' : ''} to='/about'>About</NavLink>
+            <NavLink className={({isActive}) => isActive? 'underline' : ''} to='/auth'>Auth</NavLink>
             <NavLink className={({isActive}) => isActive? 'underline' : ''} to='/career'>Career</NavLink>
             </div>
             <div className="flex gap-5">
                 <img src="/src/assets/user.png" alt="" />
-                <button className='btn btn-primary '>Login</button>
+                <Link to='/auth/login' className='btn btn-primary '>Login</Link >
             </div>
         </div>
     );
