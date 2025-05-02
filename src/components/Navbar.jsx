@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
+import UserIcon from '../assets/user.png';
 
 const Navbar = () => {
     const {user, logOut} = use(AuthContext);
@@ -24,7 +25,7 @@ const Navbar = () => {
             <NavLink className={({isActive}) => isActive? 'underline' : ''} to='/career'>Career</NavLink>
             </div>
             <div className="flex gap-5">
-                <img className='w-12 rounded-full h-12' src={`${user? user.photoURL: "/src/assets/user.png"}`} alt="" />
+                <img className='w-12 rounded-full h-12' src={`${user? user.photoURL: UserIcon}`} alt="" />
                 {
                     user? <button onClick={handleLogOut} className='btn btn-primary ' >LogOut</button>:  <Link to='/auth/login' className='btn btn-primary '>Login</Link >
                 }
