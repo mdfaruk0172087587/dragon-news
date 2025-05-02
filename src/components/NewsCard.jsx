@@ -2,6 +2,7 @@ import { FaStar, FaRegEye } from "react-icons/fa";
 import moment from "moment";
 import { GiRapidshareArrow } from "react-icons/gi";
 import { IoBookmarksSharp } from "react-icons/io5";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
   const {
@@ -12,6 +13,7 @@ const NewsCard = ({ news }) => {
     thumbnail_url,
     details,
     tags,
+    id,
   } = news;
 
   return (
@@ -51,9 +53,9 @@ const NewsCard = ({ news }) => {
         {/* Details Preview */}
         <p className="text-gray-700 text-sm mb-2">
           {details.slice(0, 200)}...
-          <span className="text-orange-500 font-semibold cursor-pointer ml-1">
+          <Link to={`/newsDetails/${id}`} className="text-orange-500 font-semibold cursor-pointer ml-1">
             Read More
-          </span>
+          </Link >
         </p>
 
         {/* Tags */}
