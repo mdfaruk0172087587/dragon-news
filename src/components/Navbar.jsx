@@ -24,7 +24,7 @@ const Navbar = () => {
             <NavLink className={({isActive}) => isActive? 'underline' : ''} to='/career'>Career</NavLink>
             </div>
             <div className="flex gap-5">
-                <img src="/src/assets/user.png" alt="" />
+                <img className='w-12 rounded-full h-12' src={`${user? user.photoURL: "/src/assets/user.png"}`} alt="" />
                 {
                     user? <button onClick={handleLogOut} className='btn btn-primary ' >LogOut</button>:  <Link to='/auth/login' className='btn btn-primary '>Login</Link >
                 }

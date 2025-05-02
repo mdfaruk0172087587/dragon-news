@@ -1,16 +1,19 @@
 import React from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import Header from '../components/Header';
 import LatestNews from '../components/LatestNews';
 import Navbar from '../components/Navbar';
 import LiftAside from '../aside/LiftAside';
 import RightAside from '../aside/RightAside';
+import Loading from '../components/Loading';
 
 const HomeLayouts = () => {
+    const {state} = useNavigate();
     return (
         <div>
            <header>
             <Header></Header>
+            {import.meta.env.VITE_name}
             <section>
                 <LatestNews></LatestNews>
             </section>
@@ -23,7 +26,9 @@ const HomeLayouts = () => {
             <LiftAside></LiftAside>
            </aside>
             <section className="main col-span-6">
-                <Outlet></Outlet>
+              {
+                state =='loading' ? <Loading/>: <Outlet></Outlet>
+              }  
             </section>
            <aside className='col-span-3 sticky top-0 h-fit'>
             <RightAside></RightAside>

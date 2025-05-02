@@ -4,7 +4,7 @@ import { AuthContext } from '../provider/AuthContext';
 
 const Register = () => {
 
-    const {register} = use(AuthContext);
+    const {register, setUser, updateUserProfile} = use(AuthContext);
     const navigate = useNavigate();
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -12,12 +12,21 @@ const Register = () => {
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
         // get register
         register(email, password)
         .then(result => {
-            console.log(result)
-            navigate('/')
+         
+            // update user profile 
+            updateUserProfile({displayName: name, photoURL:photo})
+            .then(() =>{
+                setUser({...result.user,displayName: name, photoURL:photo})
+            })
+            .catch(error=>{
+                console.log(error)
+                setUser(result.user)
+            })
+            navigate('/');
         })
         .catch(error => {
            console.log(error)

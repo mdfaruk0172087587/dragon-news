@@ -11,6 +11,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRouter from "../priveteRouter/PrivateRouter";
+import Loading from "../components/Loading";
 
 
 
@@ -26,8 +27,8 @@ import PrivateRouter from "../priveteRouter/PrivateRouter";
         {
           path: '/category/:id',
           element: <CategoryNews></CategoryNews>,
-          loader: () => fetch('/news.json')
-          
+          loader: () => fetch('/news.json'),
+          hydrateFallbackElement: <Loading></Loading>
         }
       ]
     },
@@ -48,7 +49,8 @@ import PrivateRouter from "../priveteRouter/PrivateRouter";
     {
       path: "/newsDetails/:id",
       element: <PrivateRouter><NewsDetails></NewsDetails></PrivateRouter>,
-      loader: () => fetch('/news.json')
+      loader: () => fetch('/news.json'),
+      hydrateFallbackElement: <Loading></Loading>
     },
   ]);
     
